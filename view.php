@@ -7,6 +7,7 @@ class View {
     public $controller;
     public $dateTime;
 
+
     public function __construct($table){
         $this->table = $table;
         $this->controller = new Controller($table);
@@ -23,6 +24,7 @@ class View {
     public function inputdata(){
         return $data = json_decode(file_get_contents("php://input"),false);
     }
+
     public function post($json){
       $result = $this->controller->post($json);
       if($result > 0) {
@@ -33,6 +35,15 @@ class View {
       
     }
 
+    public function delete($json){
+      $result = $this->controller->delete($json);
+      if($result > 0) {
+          http_response_code(201);
+      } else {
+        http_response_code(500);
+      }
+      
+    }
 }
 
 

@@ -21,7 +21,14 @@ class Model {
     }
 
     public function post($json){
-        $query = $this->insert($this->table,$json);
+        $query = $this->insertQuery($this->table,$json);
+        return $result = $this->db->nonQuery($query);
+
+    }
+
+    
+    public function delete($json){
+       $query = $this->deleteQuery($this->table,$json);
         return $result = $this->db->nonQuery($query);
 
     }
@@ -32,8 +39,12 @@ class Model {
 
     }
 
-    private function insert($table,$json){
+    private function insertQuery($table,$json){
         return $sql = "INSERT INTO $table $json";
+    }
+
+    private function deleteQuery($table,$json){
+        return $sql = "DELETE FROM $table  WHERE " . $json[0] . "='".$json[1]."'";
     }
 
 }

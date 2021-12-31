@@ -20,6 +20,11 @@ class Controller {
        return $result = $this->model->post($json);
 
     }
+    
+    public function delete($json){
+        return $result = $this->model->delete($json);
+ 
+     }
 }
 
 
