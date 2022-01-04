@@ -1,6 +1,6 @@
 {
     "conexion":{
-        "db":"wallet",
+        "db":"tasks",
         "user":"root",
         "host":"localhost",
         "password":""
